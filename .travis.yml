@@ -1,0 +1,18 @@
+language: objective-c
+
+matrix:
+    include:
+        - os: osx
+          osx_image: xcode9.4
+
+before_install:
+     - echo -e "machine github.com\n  login gheaeckkseqrz@gmail.com\n  password $GITHUB_PASSWORD" > ~/.netrc
+
+script:
+    ############################################################################
+    # Build main and tests
+    ############################################################################
+     - sudo gem install fastlane
+     - ssh-keyscan github.com >> ~/.ssh/known_hosts
+     - fastlane beta
+     - echo "All Done"
